@@ -1,3 +1,6 @@
+import os
+
+BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 """
 Django settings for hackathon_test project.
 
@@ -25,7 +28,7 @@ SECRET_KEY = 'django-insecure-utgh4e#e(o-__ccd2cdun_d+fld)s20ffpxeze6rfk1@wv29vy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hackathon-demo-o6km.onrender.com']
 
 
 # Application definition
@@ -76,13 +79,14 @@ WSGI_APPLICATION = 'hackathon_test.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'Sarath@2001',
-        'HOST': 'db.sniepswimfrmonwiiski.supabase.co',
-        'PORT': '5432',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
+
 
 
 # Password validation
